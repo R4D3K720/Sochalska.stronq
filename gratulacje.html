@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Gratulacje Huert!</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    #container {
+      text-align: center;
+      color: white;
+    }
+
+    #explosion {
+      display: none;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, orange 20%, red 60%, black 100%);
+      animation: explode 1s ease-out forwards;
+      margin: 0 auto;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0.1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    #congrats {
+      display: none;
+      color: red;
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    #extra {
+      margin-top: 10px;
+      color: pink;
+      font-size: 1.2em;
+    }
+
+    img {
+      width: 300px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    #ytPlayer {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <img id="clickImage" src="https://katalogmarzen.pl/img/categories/3/2019_05/elegancki-prezent-dla-chlopaka-jpg.jpg" alt="Prezent dla chłopaka">
+    <div id="explosion"></div>
+    <div id="congrats">GRATULACJE HUERT SHUDŁEŚ DO 100 KG!!!</div>
+    <div id="extra">Jesteś taką słodziutką fit babeczką, mój pączusiu bez lukru! 💖 Brawo, ty mój malutki króliczku z siłowni! 🌈💪</div>
+
+    <!-- Ukryty odtwarzacz YouTube -->
+    <iframe id="ytPlayer" src="" frameborder="0" allow="autoplay"></iframe>
+  </div>
+
+  <script>
+    const img = document.getElementById("clickImage");
+    const explosion = document.getElementById("explosion");
+    const congrats = document.getElementById("congrats");
+    const extra = document.getElementById("extra");
+    const ytPlayer = document.getElementById("ytPlayer");
+
+    img.addEventListener("click", () => {
+      img.style.display = "none";
+      explosion.style.display = "block";
+
+      // Odtwarzacz audio z YouTube – ukryty
+      ytPlayer.src = "https://www.youtube.com/embed/04854XqcfCY?autoplay=1&start=18&controls=0&mute=0&loop=1&playlist=04854XqcfCY";
+
+      setTimeout(() => {
+        explosion.style.display = "none";
+        congrats.style.display = "block";
+        extra.style.display = "block";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
